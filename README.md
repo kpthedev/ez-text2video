@@ -10,9 +10,9 @@ A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface
 * [Streamlit](https://github.com/streamlit/streamlit)
 
 ## Install
-To install, you'll need a working conda install, from either [Anaconda](https://www.anaconda.com) or [miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
+To install, you'll first need a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
 
-1. Clone this repo.
+1. Clone this repo and open the directory.
 
 ```bash
 git clone https://github.com/kpthedev/ez-text2video.git
@@ -25,7 +25,7 @@ conda env create -f environment.yaml
 ```
 
 ## Running
-To run the app, make sure you are in the `ez-text2video` folder, then run:
+To run the app, make sure you are in the `ez-text2video` folder. Then activate the conda environment and start the Streamlit app:
 
 ```bash
 conda activate t2v
@@ -37,7 +37,7 @@ This should open the webUI in your browser automatically.
 
 
 ## License
-All the original code that I have written is licensed under a GPL license. For the model weight license and conditions please refer to the [model card](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis).
+All the original code that I have written is licensed under a GPL license. For the text-to-video model license and conditions please refer to the [model card](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis).
 
 
 ## Changelog
