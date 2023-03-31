@@ -10,30 +10,33 @@ A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface
 * [Streamlit](https://github.com/streamlit/streamlit)
 
 ## Install
-To install, just clone the repo and install the requirements with `pip`. Using a virtual environment is highly recommended, below is an example using `venv`:
+> Before installing, make sure you have a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
 
-### Linux/MacOS
+Open up your terminal and enter the following commands line-by-line:
+
+1. Clone this repo.
+
 ```bash
 git clone https://github.com/kpthedev/ez-text2video.git
-cd ez-text2video
-python -m venv .env
-source .env/bin/activate
-pip install -r requirements.txt
 ```
 
-### Windows
+2. Open the directory.
+
 ```bash
-git clone https://github.com/kpthedev/ez-text2video.git
 cd ez-text2video
-python -m venv .env
-.env\Scripts\activate
-pip install -r requirements.txt
+```
+
+3. Create the conda environment.
+
+```bash
+conda env create -f environment.yaml
 ```
 
 ## Running
-To run the app, make sure you are in the `ez-text2video` folder and have activated the environment, then run:
+To run the app, make sure you are in the `ez-text2video` directory in your terminal. Then run these two commands to activate the conda environment and start the Streamlit app:
 
 ```bash
+conda activate t2v
 streamlit run app.py
 ```
 This should open the webUI in your browser automatically.
@@ -42,7 +45,7 @@ This should open the webUI in your browser automatically.
 
 
 ## License
-All the original code that I have written is licensed under a GPL license. For the model weight license and conditions please refer to the [model card](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis).
+All the original code that I have written is licensed under a GPL license. For the text-to-video model license and conditions please refer to the [model card](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis).
 
 
 ## Changelog
