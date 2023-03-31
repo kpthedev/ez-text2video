@@ -24,7 +24,8 @@
 
 import streamlit as st
 
-from models.generate import convert_to_video, generate
+from lib.generate import generate
+from lib.util import convert_to_video
 
 
 def main():
