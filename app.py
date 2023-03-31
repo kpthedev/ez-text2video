@@ -61,16 +61,16 @@ def main():
             label="Number of inference steps", min_value=1, max_value=999999, value=50
         )
         seed = num_sub_col_4.number_input(
-            "Seed", min_value=1, max_value=999999, value=42
+            label="Seed", min_value=1, max_value=999999, value=42
         )
 
         # Dim inputs
         dim_sub_col_1, dim_sub_col_2 = st.columns(2)
         height = dim_sub_col_1.slider(
-            "Height", min_value=16, max_value=1024, value=256, step=1
+            label="Height", min_value=16, max_value=1024, value=256, step=1
         )
         width = dim_sub_col_2.slider(
-            "Width", min_value=16, max_value=1024, value=256, step=1
+            label="Width", min_value=16, max_value=1024, value=256, step=1
         )
 
         with st.expander("Optimizations", expanded=True):
@@ -81,9 +81,9 @@ def main():
             with st.spinner("Generating..."):
                 raw_video = generate(
                     prompt=prompt,
-                    num_frames=frames,
-                    num_steps=steps,
-                    seed=seed,
+                    num_frames=int(frames),
+                    num_steps=int(steps),
+                    seed=int(seed),
                     height=height,
                     width=width,
                     cpu_offload=cpu_offload,
@@ -91,7 +91,7 @@ def main():
                 )
                 video = convert_to_video(
                     video_frames=raw_video,
-                    fps=n_fps,
+                    fps=int(n_fps),
                     filename=f"{prompt.replace(' ', '_').lower()}-{seed}",
                 )
 
