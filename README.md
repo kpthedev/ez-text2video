@@ -10,7 +10,7 @@ A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface
 * [Streamlit](https://github.com/streamlit/streamlit)
 
 ## Install
-To install, you'll first need a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
+> Before installing, make sure you have a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
 
 1. Clone this repo and open the directory.
 
