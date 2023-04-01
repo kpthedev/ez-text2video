@@ -1,6 +1,0 @@
-torch
-git+https://github.com/huggingface/diffusers.git
-git+https://github.com/huggingface/transformers.git
-accelerate
-opencv-python
-streamlit
