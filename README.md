@@ -1,6 +1,8 @@
 # ez-text2vid
 
-![screenshot](https://user-images.githubusercontent.com/115115916/229177973-6a5b1a28-38a8-42a1-bf80-1315cc4d806c.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115115916/229304939-077368d0-58a2-499e-a2c8-010e1bb5f4e7.png" />
+</p>
 
 A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis) diffusion model with customized video length, fps, and dimensions. It can run on 4GB video cards, as well as CPU and Apple M chips.
 
