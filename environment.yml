@@ -1,13 +1,16 @@
 name: t2v
 channels:
+  - pytorch
+  - nvidia
   - defaults
 dependencies:
-  - python=3.11.2
+  - python=3.10.10
   - pip=23.0.1
+  - pytorch=2.0.0
+  - pytorch-cuda=11.7
   - pip:
     - accelerate==0.18.0
     - opencv-python==4.7.0.72
     - streamlit==1.20.0
-    - torch==2.0.0
     - git+https://github.com/huggingface/diffusers.git
     - git+https://github.com/huggingface/transformers.git
