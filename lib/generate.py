@@ -35,9 +35,10 @@ def make_pipeline_generator(
     """Create text2video pipeline"""
     pipeline = DiffusionPipeline.from_pretrained(
         "damo-vilab/text-to-video-ms-1.7b",
+        cache_dir="./cache",
+        low_cpu_mem_usage=True,
         variant="fp16",
-        # torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-        torch_dtype=torch.float16
+        torch_dtype=torch.float32 if device == "cpu" else torch.float16,
     )
     pipeline = pipeline.to(torch.device(device))
     if cpu_offload:
