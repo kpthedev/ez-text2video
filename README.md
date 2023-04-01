@@ -2,7 +2,7 @@
 
 ![screenshot](https://user-images.githubusercontent.com/115115916/229177973-6a5b1a28-38a8-42a1-bf80-1315cc4d806c.png)
 
-A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis) diffusion model with customizable number of frames, fps, and dimensions.
+A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface.co/damo-vilab/modelscope-damo-text-to-video-synthesis) diffusion model with customized video length, fps, and dimensions. It can run on 4GB video cards, as well as CPU and Apple M chips.
 
 **Built with:**
 * [Huggingface Diffusers](https://github.com/huggingface/diffusers)🧨
@@ -50,3 +50,4 @@ All the original code that I have written is licensed under a GPL license. For t
 
 ## Changelog
 * Mar 31, 2023 - Inital release
+* April 1, 2023 - Switch to conda install
