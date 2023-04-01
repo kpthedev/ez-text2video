@@ -22,6 +22,8 @@
 #
 #
 
+import argparse
+
 import streamlit as st
 
 from lib.generate import generate
@@ -29,6 +31,15 @@ from lib.util import convert_to_video, get_device
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--device",
+        choices=["cuda", "mps", "cpu"],
+        help="Override device",
+    )
+    args = parser.parse_args()
+    device = args.device if args.device is not None else get_device()
+
     st.set_page_config(
         page_title="ez-text2video",
         page_icon="🎥",
@@ -39,9 +50,6 @@ def main():
             "About": "# ez-text2video 🎥 \n A Streamlit app to easily run the text-to-video diffusion model.",
         },
     )
-
-    device = get_device()
-
     st.write("# ez-text2video 🎥")
     col_left, col_right = st.columns(2)
 
