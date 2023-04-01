@@ -22,29 +22,10 @@
 #
 
 import gc
-from pathlib import Path
 
-import cv2
 import streamlit as st
 import torch
 from diffusers import DiffusionPipeline
-
-
-# Adapted from: https://github.com/huggingface/diffusers/blob/main/src/diffusers/utils/testing_utils.py
-def convert_to_video(video_frames: list, fps: int, filename: str) -> str:
-    """Convert from numpy array of frame to webm"""
-    Path("./outputs").mkdir(parents=True, exist_ok=True)
-    output_video_path = f"./outputs/{filename}.webm"
-
-    fourcc = cv2.VideoWriter_fourcc(*"VP90")
-    h, w, c = video_frames[0].shape
-    video_writer = cv2.VideoWriter(output_video_path, fourcc, fps=fps, frameSize=(w, h))
-
-    for i in range(len(video_frames)):
-        img = cv2.cvtColor(video_frames[i], cv2.COLOR_RGB2BGR)
-        video_writer.write(img)
-
-    return output_video_path
 
 
 @st.cache_resource
@@ -54,8 +35,10 @@ def make_pipeline_generator(
     """Create text2video pipeline"""
     pipeline = DiffusionPipeline.from_pretrained(
         "damo-vilab/text-to-video-ms-1.7b",
+        cache_dir="./cache",
+        low_cpu_mem_usage=True,
         variant="fp16",
-        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        torch_dtype=torch.float32 if device == "cpu" else torch.float16,
     )
     pipeline = pipeline.to(torch.device(device))
     if cpu_offload:
@@ -72,19 +55,11 @@ def generate(
     seed: int,
     height: int,
     width: int,
+    device: str,
     cpu_offload: bool,
     attention_slice: bool,
 ) -> list:
     """Generate video with text2video pipeline"""
-    # Get device
-    if torch.cuda.is_available():
-        device = "cuda"
-    elif torch.backends.mps.is_available():
-        device = "mps"
-    else:
-        device = "cpu"
-
-    # Run model
     pipeline = make_pipeline_generator(
         device=device, cpu_offload=cpu_offload, attention_slice=attention_slice
     )
@@ -97,9 +72,6 @@ def generate(
         width=width,
         generator=generator,
     ).frames
-
-    # Clean up memory
     torch.cuda.empty_cache()
     gc.collect()
-
     return video
