@@ -36,7 +36,8 @@ def make_pipeline_generator(
     pipeline = DiffusionPipeline.from_pretrained(
         "damo-vilab/text-to-video-ms-1.7b",
         variant="fp16",
-        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        # torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        torch_dtype=torch.float16
     )
     pipeline = pipeline.to(torch.device(device))
     if cpu_offload:
@@ -53,19 +54,11 @@ def generate(
     seed: int,
     height: int,
     width: int,
+    device: str,
     cpu_offload: bool,
     attention_slice: bool,
 ) -> list:
     """Generate video with text2video pipeline"""
-    # Get device
-    if torch.cuda.is_available():
-        device = "cuda"
-    elif torch.backends.mps.is_available():
-        device = "mps"
-    else:
-        device = "cpu"
-
-    # Run model
     pipeline = make_pipeline_generator(
         device=device, cpu_offload=cpu_offload, attention_slice=attention_slice
     )
@@ -78,9 +71,6 @@ def generate(
         width=width,
         generator=generator,
     ).frames
-
-    # Clean up memory
     torch.cuda.empty_cache()
     gc.collect()
-
     return video

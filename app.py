@@ -25,7 +25,7 @@
 import streamlit as st
 
 from lib.generate import generate
-from lib.util import convert_to_video
+from lib.util import convert_to_video, get_device
 
 
 def main():
@@ -40,14 +40,16 @@ def main():
         },
     )
 
+    device = get_device()
+
     st.write("# ez-text2video 🎥")
     col_left, col_right = st.columns(2)
+
     with col_left:
         st.info(
             "The very first time you run this app, it will take some time to download all of the models (~5 mins).",
             icon="ℹ️",
         )
-
         prompt = st.text_area("Prompt")
 
         # Number inputs
@@ -75,8 +77,17 @@ def main():
         )
 
         with st.expander("Optimizations", expanded=True):
-            cpu_offload = st.checkbox("Enable CPU offloading", value=True)
-            attention_slice = st.checkbox("Enable attention slicing (slow)")
+            st.markdown(f"**Device:** `{device}`")
+            cpu_offload = st.checkbox(
+                "Enable CPU offloading",
+                value=True if device == "cuda" else False,
+                disabled=True if device == "cpu" else False,
+            )
+            attention_slice = st.checkbox(
+                "Enable attention slicing (slow)",
+                value=True if device == "mps" else False,
+                disabled=True if device == "cpu" else False,
+            )
 
         if st.button("Generate", use_container_width=True):
             with st.spinner("Generating..."):
@@ -87,6 +98,7 @@ def main():
                     seed=int(seed),
                     height=height,
                     width=width,
+                    device=device,
                     cpu_offload=cpu_offload,
                     attention_slice=attention_slice,
                 )
