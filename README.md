@@ -11,9 +11,10 @@ A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface
 * [Pytorch](https://github.com/pytorch/pytorch)
 * [Streamlit](https://github.com/streamlit/streamlit)
 
-## Install
-Before installing, make sure you have a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
+## Installation 
+Before installing, make sure you have working [git](https://git-scm.com/downloads) and [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installations. If you have an Nvidia graphics card, you should also install [CUDA](https://developer.nvidia.com/cuda-downloads).
 
+### Install Steps:
 1. Open a terminal on your machine. PowerShell is recommended for Windows.
 
 2. Clone this repo using git:
