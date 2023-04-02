@@ -38,7 +38,7 @@ def make_pipeline_generator(
         cache_dir="./cache",
         low_cpu_mem_usage=True,
         variant="fp16",
-        torch_dtype=torch.float32 if device == "cpu" else torch.float16,
+        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
     )
     pipeline = pipeline.to(torch.device(device))
     if cpu_offload:
