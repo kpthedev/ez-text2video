@@ -12,30 +12,30 @@ A Streamlit app to easily run the [ModelScope text-to-video](https://huggingface
 * [Streamlit](https://github.com/streamlit/streamlit)
 
 ## Install
-> Before installing, make sure you have a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
+Before installing, make sure you have a working [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installation.
 
-Open up your terminal and enter the following commands line-by-line:
+1. Open a terminal on your machine. PowerShell is recommended for Windows.
 
-1. Clone this repo.
+2. Clone this repo using git:
 
-```bash
-git clone https://github.com/kpthedev/ez-text2video.git
-```
+    ```terminal
+    git clone https://github.com/kpthedev/ez-text2video.git
+    ```
 
-2. Open the directory.
+3. Open the folder:
 
-```bash
-cd ez-text2video
-```
+    ```terminal
+    cd ez-text2video
+    ```
 
-3. Create the conda environment.
+4. Create the conda environment:
 
-```bash
-conda env create -f environment.yaml
-```
+    ```terminal
+    conda env create -f environment.yaml
+    ```
 
 ## Running
-To run the app, make sure you are in the `ez-text2video` directory in your terminal. Then run these two commands to activate the conda environment and start the Streamlit app:
+To run the app, make sure you are in the `ez-text2video` folder in your terminal. Then run these two commands to activate the conda environment and start the Streamlit app:
 
 ```bash
 conda activate t2v
