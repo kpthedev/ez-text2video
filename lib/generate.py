@@ -39,11 +39,15 @@ def make_pipeline_generator(
         variant="fp16",
         torch_dtype=torch.float32 if device == "cpu" else torch.float16,
     )
-    pipeline = pipeline.to(torch.device(device))
+
     if cpu_offload:
         pipeline.enable_sequential_cpu_offload()
+    else:
+        pipeline = pipeline.to(torch.device(device))
+
     if attention_slice:
         pipeline.enable_attention_slicing()
+
     return pipeline
 
 
@@ -62,7 +66,7 @@ def generate(
     pipeline = make_pipeline_generator(
         device=device, cpu_offload=cpu_offload, attention_slice=attention_slice
     )
-    generator = torch.Generator(device=torch.device(device)).manual_seed(seed)
+    generator = torch.Generator().manual_seed(seed)
     video = pipeline(
         prompt=prompt,
         num_frames=num_frames,
