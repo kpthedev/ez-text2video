@@ -25,18 +25,17 @@ import gc
 
 import streamlit as st
 import torch
-from diffusers import DiffusionPipeline
+from diffusers import TextToVideoSDPipeline
 
 
 @st.cache_resource
 def make_pipeline_generator(
     device: str, cpu_offload: bool, attention_slice: bool
-) -> DiffusionPipeline:
+) -> TextToVideoSDPipeline:
     """Create text2video pipeline"""
-    pipeline = DiffusionPipeline.from_pretrained(
+    pipeline = TextToVideoSDPipeline.from_pretrained(
         "damo-vilab/text-to-video-ms-1.7b",
         cache_dir="./cache",
-        low_cpu_mem_usage=True,
         variant="fp16",
         torch_dtype=torch.float32 if device == "cpu" else torch.float16,
     )
