@@ -54,3 +54,4 @@ All the original code that I have written is licensed under a GPL license. For t
 ## Changelog
 * Mar 31, 2023 - Inital release
 * April 1, 2023 - Switch to conda install
+* June 2, 2023 - Move to stable version of diffusers
