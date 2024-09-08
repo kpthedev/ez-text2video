@@ -12,4 +12,5 @@ dependencies:
     - diffusers==0.16.1
     - transformers==4.29.2
     - opencv-python==4.7.0.72
+    - numpy==1.26.4
     - streamlit==1.20.0
