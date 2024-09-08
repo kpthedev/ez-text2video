@@ -78,10 +78,10 @@ def main():
         # Dim inputs
         dim_sub_col_1, dim_sub_col_2 = st.columns(2)
         height = dim_sub_col_1.slider(
-            label="Height", min_value=16, max_value=1024, value=256, step=1
+            label="Height", min_value=16, max_value=1024, value=256, step=8
         )
         width = dim_sub_col_2.slider(
-            label="Width", min_value=16, max_value=1024, value=256, step=1
+            label="Width", min_value=16, max_value=1024, value=256, step=8
         )
 
         with st.expander("Optimizations", expanded=True):
